@@ -88,6 +88,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 20px;display:fl
 .menu-card.popular::before{content:'人気';position:absolute;top:12px;right:12px;background:var(--caramel);color:#fff;font-size:10px;font-weight:700;padding:3px 8px;border-radius:8px;}
 .menu-card.new-item::before{content:'NEW';position:absolute;top:12px;right:12px;background:#e05a2b;color:#fff;font-size:10px;font-weight:700;padding:3px 8px;border-radius:8px;}
 .menu-card.limited::before{content:'季節限定';position:absolute;top:12px;right:12px;background:#c0392b;color:#fff;font-size:10px;font-weight:700;padding:3px 8px;border-radius:8px;}
+.menu-card-img{width:100%;height:140px;object-fit:cover;border-radius:10px;margin-bottom:12px;display:block;}
 .menu-num{font-size:11px;color:var(--caramel);letter-spacing:1px;margin-bottom:6px;}
 .menu-name{font-size:15px;font-weight:700;color:var(--cream);margin-bottom:8px;line-height:1.4;}
 .menu-price{font-family:'Zen Maru Gothic',sans-serif;font-size:22px;font-weight:800;color:var(--gold);}
@@ -325,66 +326,76 @@ footer p{font-size:11px;color:#666;margin-top:16px;}
       <button class="menu-tab" onclick="switchTab('alcohol')">アルコール</button>
     </div>
 
-    <!-- CREPE -->
     <div class="menu-panel active" id="tab-crepe">
       <div class="menu-grid" id="crepe-grid">
-        <!-- Firestore から動的に読み込み（フォールバックあり） -->
         <div class="menu-card popular">
+          <img src="IMG_2295.jpeg" class="menu-card-img" alt="チョコバナナクリーム">
           <div class="menu-num">No.1 人気</div>
           <div class="menu-name">チョコバナナクリーム</div>
           <div class="menu-price">¥600<small> 税込</small></div>
         </div>
         <div class="menu-card">
+          <img src="IMG_2311.jpeg" class="menu-card-img" alt="バナナクリーム">
           <div class="menu-num">No.2</div>
           <div class="menu-name">バナナクリーム</div>
           <div class="menu-price">¥580<small> 税込</small></div>
         </div>
         <div class="menu-card">
+          <img src="IMG_2293.jpeg" class="menu-card-img" alt="バナナカスタード">
           <div class="menu-num">No.3</div>
           <div class="menu-name">バナナカスタード</div>
           <div class="menu-price">¥650<small> 税込</small></div>
         </div>
         <div class="menu-card popular">
+          <img src="IMG_2294.jpeg" class="menu-card-img" alt="バナナクリーム＆カスタード">
           <div class="menu-num">No.4 人気2位</div>
           <div class="menu-name">バナナクリーム＆カスタード</div>
           <div class="menu-price">¥650<small> 税込</small></div>
         </div>
         <div class="menu-card">
+          <img src="IMG_2297.jpeg" class="menu-card-img" alt="クリーム＆カスタード">
           <div class="menu-num">No.5</div>
           <div class="menu-name">クリーム＆カスタード</div>
           <div class="menu-price">¥550<small> 税込</small></div>
         </div>
         <div class="menu-card">
+          <img src="IMG_2296.jpeg" class="menu-card-img" alt="クリームチョコ">
           <div class="menu-num">No.6</div>
           <div class="menu-name">クリームチョコ</div>
           <div class="menu-price">¥500<small> 税込</small></div>
         </div>
         <div class="menu-card popular">
+          <img src="IMG_2288.jpeg" class="menu-card-img" alt="カスタードブリュレ">
           <div class="menu-num">No.7 人気3位</div>
           <div class="menu-name">カスタードブリュレ</div>
           <div class="menu-price">¥700<small> 税込</small></div>
         </div>
         <div class="menu-card">
+          <img src="IMG_2292.jpeg" class="menu-card-img" alt="バターシュガー">
           <div class="menu-num">No.8</div>
           <div class="menu-name">バターシュガー</div>
           <div class="menu-price">¥500<small> 税込</small></div>
         </div>
         <div class="menu-card">
+          <img src="IMG_2291.jpeg" class="menu-card-img" alt="ツナマヨと野菜">
           <div class="menu-num">No.9</div>
           <div class="menu-name">ツナマヨと野菜</div>
           <div class="menu-price">¥550<small> 税込</small></div>
         </div>
         <div class="menu-card">
+          <img src="IMG_2290.jpeg" class="menu-card-img" alt="チーズハムマヨと野菜">
           <div class="menu-num">No.10</div>
           <div class="menu-name">チーズハムマヨと野菜</div>
           <div class="menu-price">¥600<small> 税込</small></div>
         </div>
         <div class="menu-card new-item">
+          <img src="IMG_2289.jpeg" class="menu-card-img" alt="マロンモンブランクリーム">
           <div class="menu-num">No.11 NEW</div>
           <div class="menu-name">マロンモンブランクリーム</div>
           <div class="menu-price">¥700<small> 税込</small></div>
         </div>
         <div class="menu-card limited">
+          <img src="IMG_2287.jpeg" class="menu-card-img" alt="いちごチョコクレープ">
           <div class="menu-num">季節限定</div>
           <div class="menu-name">いちごチョコクレープ</div>
           <div class="menu-price">¥750<small> 税込</small></div>
