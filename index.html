@@ -45,6 +45,18 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 20px;display:fl
 .hero-info-item .label{font-size:9px;letter-spacing:2px;color:var(--gray);text-transform:uppercase;margin-bottom:4px;}
 .hero-info-item .val{font-family:'Zen Maru Gothic',sans-serif;font-size:14px;color:var(--brown);font-weight:600;}
 
+/* NOTICE BANNER */
+#notice-section{background:linear-gradient(135deg,var(--brown),#5a2d0c);padding:0;overflow:hidden;display:none;}
+#notice-section.has-notices{display:block;}
+.notice-inner{max-width:800px;margin:0 auto;padding:32px 24px;}
+.notice-header{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.notice-header .notice-icon{width:32px;height:32px;background:var(--caramel);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;}
+.notice-header h2{font-family:'Zen Maru Gothic',sans-serif;font-size:18px;color:#fff;letter-spacing:2px;}
+.notice-list{display:flex;flex-direction:column;gap:12px;}
+.notice-item{background:rgba(255,255,255,0.08);border-radius:12px;padding:16px 20px;border-left:3px solid var(--gold);}
+.notice-item .notice-date{font-size:10px;letter-spacing:2px;color:var(--gold);margin-bottom:6px;}
+.notice-item .notice-text{font-size:14px;color:#f0e8dc;line-height:1.7;}
+
 /* SECTION */
 .section{padding:72px 24px;max-width:800px;margin:0 auto;}
 .section-header{text-align:center;margin-bottom:48px;}
@@ -105,6 +117,22 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 20px;display:fl
 .map-btn{display:block;text-align:center;margin-top:12px;background:var(--caramel);color:#fff;font-size:13px;font-weight:700;padding:11px;border-radius:20px;text-decoration:none;transition:opacity .2s;}
 .map-btn:hover{opacity:.85;}
 
+/* CONTACT */
+.contact-section{padding:72px 24px;background:var(--cream);}
+.contact-inner{max-width:500px;margin:0 auto;}
+.contact-form{background:#fff;border-radius:20px;padding:36px;box-shadow:0 4px 24px rgba(61,35,20,0.08);}
+.form-group{margin-bottom:20px;}
+.form-label{display:block;font-size:12px;letter-spacing:1px;color:var(--caramel);margin-bottom:8px;font-weight:500;}
+.form-input,.form-textarea{width:100%;padding:12px 16px;border:1px solid #e8ddd0;border-radius:10px;font-size:14px;font-family:'Noto Sans JP',sans-serif;color:var(--dark);background:#fdf9f5;transition:border-color .2s,box-shadow .2s;outline:none;}
+.form-input:focus,.form-textarea:focus{border-color:var(--caramel);box-shadow:0 0 0 3px rgba(200,118,42,0.1);}
+.form-textarea{min-height:120px;resize:vertical;line-height:1.7;}
+.form-btn{width:100%;background:var(--caramel);color:#fff;font-size:14px;font-weight:700;padding:14px;border-radius:25px;border:none;cursor:pointer;font-family:'Noto Sans JP',sans-serif;letter-spacing:1px;transition:transform .2s,box-shadow .2s;}
+.form-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(200,118,42,0.35);}
+.form-btn:disabled{opacity:0.6;cursor:not-allowed;transform:none;}
+.form-msg{text-align:center;font-size:13px;margin-top:14px;padding:10px;border-radius:8px;display:none;}
+.form-msg.success{background:#e8f5e9;color:#2e7d32;display:block;}
+.form-msg.error{background:#ffebee;color:#c62828;display:block;}
+
 /* SNS */
 .sns-section{padding:48px 24px;text-align:center;}
 .sns-section p{font-size:13px;color:var(--gray);margin-bottom:20px;}
@@ -116,6 +144,61 @@ footer{background:var(--dark);padding:40px 24px;text-align:center;}
 .footer-logo{font-family:'Zen Maru Gothic',sans-serif;font-size:20px;letter-spacing:6px;color:var(--cream);margin-bottom:8px;}
 .footer-logo small{display:block;font-size:9px;letter-spacing:3px;color:var(--caramel);}
 footer p{font-size:11px;color:#666;margin-top:16px;}
+.footer-admin-link{font-size:11px;color:#444;text-decoration:none;margin-top:8px;display:inline-block;}
+.footer-admin-link:hover{color:#888;}
+
+/* ========== ADMIN PAGE ========== */
+#admin-page{display:none;min-height:100vh;background:#f5f0eb;padding:0;}
+#admin-page.show{display:block;}
+.admin-nav{background:var(--brown);padding:16px 24px;display:flex;align-items:center;justify-content:space-between;}
+.admin-nav h1{font-family:'Zen Maru Gothic',sans-serif;font-size:16px;color:#fff;letter-spacing:2px;}
+.admin-nav-btn{background:rgba(255,255,255,0.15);color:#fff;border:none;padding:8px 16px;border-radius:20px;font-size:12px;cursor:pointer;font-family:'Noto Sans JP',sans-serif;}
+.admin-nav-btn:hover{background:rgba(255,255,255,0.25);}
+.admin-body{max-width:900px;margin:0 auto;padding:32px 24px;}
+.admin-tabs{display:flex;gap:8px;margin-bottom:28px;flex-wrap:wrap;}
+.admin-tab{padding:10px 20px;border-radius:20px;border:1px solid #ddd;background:#fff;color:#666;font-size:13px;cursor:pointer;font-family:'Noto Sans JP',sans-serif;transition:all .2s;}
+.admin-tab.active{background:var(--caramel);border-color:var(--caramel);color:#fff;}
+.admin-panel{display:none;}
+.admin-panel.active{display:block;}
+.admin-card{background:#fff;border-radius:16px;padding:24px;margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,0.06);}
+.admin-card h3{font-family:'Zen Maru Gothic',sans-serif;font-size:16px;color:var(--brown);margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid #f0e8dc;}
+.admin-form-group{margin-bottom:16px;}
+.admin-label{display:block;font-size:12px;color:var(--caramel);letter-spacing:1px;margin-bottom:6px;}
+.admin-input,.admin-textarea,.admin-select{width:100%;padding:10px 14px;border:1px solid #e0d8d0;border-radius:8px;font-size:14px;font-family:'Noto Sans JP',sans-serif;outline:none;transition:border-color .2s;}
+.admin-input:focus,.admin-textarea:focus,.admin-select:focus{border-color:var(--caramel);}
+.admin-textarea{min-height:80px;resize:vertical;}
+.admin-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.admin-btn{background:var(--caramel);color:#fff;border:none;padding:10px 24px;border-radius:20px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Noto Sans JP',sans-serif;transition:opacity .2s;}
+.admin-btn:hover{opacity:.85;}
+.admin-btn-danger{background:#e53935;}
+.admin-btn-secondary{background:#8a7a6e;}
+.admin-list{display:flex;flex-direction:column;gap:12px;margin-top:16px;}
+.admin-list-item{background:#fdf9f5;border-radius:10px;padding:14px 16px;border:1px solid #ede5d8;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;}
+.admin-list-item .item-content{flex:1;}
+.admin-list-item .item-title{font-size:14px;font-weight:700;color:var(--dark);margin-bottom:4px;}
+.admin-list-item .item-sub{font-size:12px;color:var(--gray);}
+.admin-list-item .item-actions{display:flex;gap:8px;flex-shrink:0;}
+.admin-list-item .item-btn{padding:6px 12px;border-radius:12px;border:none;font-size:11px;cursor:pointer;font-family:'Noto Sans JP',sans-serif;}
+.admin-list-item .item-btn-del{background:#ffebee;color:#c62828;}
+.admin-msg{font-size:13px;padding:10px 14px;border-radius:8px;margin-top:12px;display:none;}
+.admin-msg.success{background:#e8f5e9;color:#2e7d32;display:block;}
+.admin-msg.error{background:#ffebee;color:#c62828;display:block;}
+.inquiry-item{background:#fdf9f5;border-radius:10px;padding:16px;border:1px solid #ede5d8;margin-bottom:10px;}
+.inquiry-item .inq-name{font-size:14px;font-weight:700;color:var(--brown);margin-bottom:4px;}
+.inquiry-item .inq-date{font-size:11px;color:var(--gray);margin-bottom:8px;}
+.inquiry-item .inq-msg{font-size:13px;color:var(--dark);line-height:1.7;}
+.badge-new{background:var(--caramel);color:#fff;font-size:10px;padding:2px 8px;border-radius:8px;margin-left:6px;}
+
+/* LOGIN */
+#login-overlay{position:fixed;inset:0;background:rgba(28,20,16,0.85);z-index:200;display:flex;align-items:center;justify-content:center;display:none;}
+#login-overlay.show{display:flex;}
+.login-box{background:#fff;border-radius:20px;padding:40px 32px;width:320px;text-align:center;}
+.login-box h2{font-family:'Zen Maru Gothic',sans-serif;font-size:20px;color:var(--brown);margin-bottom:8px;}
+.login-box p{font-size:13px;color:var(--gray);margin-bottom:24px;}
+.login-input{width:100%;padding:12px 16px;border:1px solid #e0d8d0;border-radius:10px;font-size:14px;font-family:'Noto Sans JP',sans-serif;outline:none;margin-bottom:12px;text-align:center;letter-spacing:4px;}
+.login-input:focus{border-color:var(--caramel);}
+.login-btn{width:100%;background:var(--caramel);color:#fff;border:none;padding:13px;border-radius:25px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Noto Sans JP',sans-serif;}
+.login-error{color:#c62828;font-size:13px;margin-top:10px;display:none;}
 
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
@@ -126,10 +209,26 @@ footer p{font-size:11px;color:#666;margin-top:16px;}
   .info-grid{grid-template-columns:1fr;}
   .drink-grid{grid-template-columns:1fr;}
   .nav-links{display:none;}
+  .admin-row{grid-template-columns:1fr;}
 }
 </style>
 </head>
 <body>
+
+<!-- ===== LOGIN OVERLAY ===== -->
+<div id="login-overlay">
+  <div class="login-box">
+    <h2>管理者ログイン</h2>
+    <p>クレープ ろじうら 管理ページ</p>
+    <input type="password" id="login-pw" class="login-input" placeholder="パスワード" maxlength="20">
+    <button class="login-btn" onclick="doLogin()">ログイン</button>
+    <div class="login-error" id="login-error">パスワードが違います</div>
+    <button style="margin-top:16px;background:none;border:none;color:#aaa;font-size:12px;cursor:pointer;" onclick="closeAdmin()">← サイトに戻る</button>
+  </div>
+</div>
+
+<!-- ===== MAIN SITE ===== -->
+<div id="main-site">
 
 <nav>
   <div class="nav-logo">
@@ -139,6 +238,7 @@ footer p{font-size:11px;color:#666;margin-top:16px;}
   <div class="nav-links">
     <a href="#menu">メニュー</a>
     <a href="#info">アクセス</a>
+    <a href="#contact">お問い合わせ</a>
     <a href="https://www.instagram.com/creperodjiura/" target="_blank">Instagram</a>
   </div>
 </nav>
@@ -166,6 +266,17 @@ footer p{font-size:11px;color:#666;margin-top:16px;}
       <div class="label">定休日</div>
       <div class="val">火・水・木</div>
     </div>
+  </div>
+</div>
+
+<!-- NOTICE -->
+<div id="notice-section">
+  <div class="notice-inner">
+    <div class="notice-header">
+      <div class="notice-icon">📢</div>
+      <h2>お知らせ</h2>
+    </div>
+    <div class="notice-list" id="notice-list"></div>
   </div>
 </div>
 
@@ -217,7 +328,8 @@ footer p{font-size:11px;color:#666;margin-top:16px;}
 
     <!-- CREPE -->
     <div class="menu-panel active" id="tab-crepe">
-      <div class="menu-grid">
+      <div class="menu-grid" id="crepe-grid">
+        <!-- Firestore から動的に読み込み（フォールバックあり） -->
         <div class="menu-card popular">
           <div class="menu-num">No.1 人気</div>
           <div class="menu-name">チョコバナナクリーム</div>
@@ -285,45 +397,13 @@ footer p{font-size:11px;color:#666;margin-top:16px;}
     <div class="menu-panel" id="tab-drink">
       <div class="drink-grid" style="max-width:600px;margin:0 auto;">
         <div class="drink-section-title">☕ ドリンクメニュー</div>
-        <div class="drink-item">
-          <div class="drink-name">コーヒー</div>
-          <div class="drink-prices">
-            <div class="drink-price-row"><span>HOT</span>¥350</div>
-            <div class="drink-price-row"><span>ICE</span>¥400</div>
-          </div>
-        </div>
-        <div class="drink-item">
-          <div class="drink-name">カフェオレ</div>
-          <div class="drink-prices">
-            <div class="drink-price-row"><span>HOT</span>¥450</div>
-            <div class="drink-price-row"><span>ICE</span>¥500</div>
-          </div>
-        </div>
-        <div class="drink-item">
-          <div class="drink-name">ほうじ茶ラテ</div>
-          <div class="drink-prices">
-            <div class="drink-price-row"><span>HOT</span>¥500</div>
-            <div class="drink-price-row"><span>ICE</span>¥550</div>
-          </div>
-        </div>
-        <div class="drink-item">
-          <div class="drink-name">紅茶<small>Earl Grey</small></div>
-          <div class="drink-prices">
-            <div class="drink-price-row"><span>HOT</span>¥500</div>
-          </div>
-        </div>
-        <div class="drink-item">
-          <div class="drink-name">ウーロン茶</div>
-          <div class="drink-prices"><div class="drink-price-row">¥300</div></div>
-        </div>
-        <div class="drink-item">
-          <div class="drink-name">オレンジジュース</div>
-          <div class="drink-prices"><div class="drink-price-row">¥300</div></div>
-        </div>
-        <div class="drink-item">
-          <div class="drink-name">アップルジュース</div>
-          <div class="drink-prices"><div class="drink-price-row">¥300</div></div>
-        </div>
+        <div class="drink-item"><div class="drink-name">コーヒー</div><div class="drink-prices"><div class="drink-price-row"><span>HOT</span>¥350</div><div class="drink-price-row"><span>ICE</span>¥400</div></div></div>
+        <div class="drink-item"><div class="drink-name">カフェオレ</div><div class="drink-prices"><div class="drink-price-row"><span>HOT</span>¥450</div><div class="drink-price-row"><span>ICE</span>¥500</div></div></div>
+        <div class="drink-item"><div class="drink-name">ほうじ茶ラテ</div><div class="drink-prices"><div class="drink-price-row"><span>HOT</span>¥500</div><div class="drink-price-row"><span>ICE</span>¥550</div></div></div>
+        <div class="drink-item"><div class="drink-name">紅茶<small>Earl Grey</small></div><div class="drink-prices"><div class="drink-price-row"><span>HOT</span>¥500</div></div></div>
+        <div class="drink-item"><div class="drink-name">ウーロン茶</div><div class="drink-prices"><div class="drink-price-row">¥300</div></div></div>
+        <div class="drink-item"><div class="drink-name">オレンジジュース</div><div class="drink-prices"><div class="drink-price-row">¥300</div></div></div>
+        <div class="drink-item"><div class="drink-name">アップルジュース</div><div class="drink-prices"><div class="drink-price-row">¥300</div></div></div>
       </div>
     </div>
 
@@ -331,22 +411,10 @@ footer p{font-size:11px;color:#666;margin-top:16px;}
     <div class="menu-panel" id="tab-alcohol">
       <div class="drink-grid" style="max-width:500px;margin:0 auto;">
         <div class="drink-section-title">🍺 アルコールメニュー</div>
-        <div class="drink-item">
-          <div class="drink-name">バドワイザー<small>瓶 330ml</small></div>
-          <div class="drink-prices"><div class="drink-price-row">¥500</div></div>
-        </div>
-        <div class="drink-item">
-          <div class="drink-name">ハイネケン<small>瓶 330ml</small></div>
-          <div class="drink-prices"><div class="drink-price-row">¥600</div></div>
-        </div>
-        <div class="drink-item">
-          <div class="drink-name">レモンサワー</div>
-          <div class="drink-prices"><div class="drink-price-row">¥400</div></div>
-        </div>
-        <div class="drink-item">
-          <div class="drink-name">MIXナッツ<small>アルコール注文時限り</small></div>
-          <div class="drink-prices"><div class="drink-price-row">¥200</div></div>
-        </div>
+        <div class="drink-item"><div class="drink-name">バドワイザー<small>瓶 330ml</small></div><div class="drink-prices"><div class="drink-price-row">¥500</div></div></div>
+        <div class="drink-item"><div class="drink-name">ハイネケン<small>瓶 330ml</small></div><div class="drink-prices"><div class="drink-price-row">¥600</div></div></div>
+        <div class="drink-item"><div class="drink-name">レモンサワー</div><div class="drink-prices"><div class="drink-price-row">¥400</div></div></div>
+        <div class="drink-item"><div class="drink-name">MIXナッツ<small>アルコール注文時限り</small></div><div class="drink-prices"><div class="drink-price-row">¥200</div></div></div>
       </div>
     </div>
   </div>
@@ -363,34 +431,13 @@ footer p{font-size:11px;color:#666;margin-top:16px;}
     <div class="info-grid reveal">
       <div class="info-card">
         <h3>店舗情報</h3>
-        <div class="info-row">
-          <span class="info-label">住所</span>
-          <span class="info-val">埼玉県越谷市南町2丁目10-14</span>
-        </div>
-        <div class="info-row">
-          <span class="info-label">営業時間</span>
-          <span class="info-val">11:00〜19:00<br><small style="color:#999">生地がなくなり次第閉店</small></span>
-        </div>
-        <div class="info-row">
-          <span class="info-label">営業日</span>
-          <span class="info-val">月・金・土・日・祝日</span>
-        </div>
-        <div class="info-row">
-          <span class="info-label">定休日</span>
-          <span class="info-val">火・水・木曜日</span>
-        </div>
-        <div class="info-row">
-          <span class="info-label">最寄駅</span>
-          <span class="info-val">新田駅（東口）徒歩約16分</span>
-        </div>
-        <div class="info-row">
-          <span class="info-label">支払い</span>
-          <span class="info-val">PayPay対応・現金</span>
-        </div>
-        <div class="info-row">
-          <span class="info-label">駐輪</span>
-          <span class="info-val">駐車場1台あり</span>
-        </div>
+        <div class="info-row"><span class="info-label">住所</span><span class="info-val">埼玉県越谷市南町2丁目10-14</span></div>
+        <div class="info-row"><span class="info-label">営業時間</span><span class="info-val">11:00〜19:00<br><small style="color:#999">生地がなくなり次第閉店</small></span></div>
+        <div class="info-row"><span class="info-label">営業日</span><span class="info-val">月・金・土・日・祝日</span></div>
+        <div class="info-row"><span class="info-label">定休日</span><span class="info-val">火・水・木曜日</span></div>
+        <div class="info-row"><span class="info-label">最寄駅</span><span class="info-val">新田駅（東口）徒歩約16分</span></div>
+        <div class="info-row"><span class="info-label">支払い</span><span class="info-val">PayPay対応・現金</span></div>
+        <div class="info-row"><span class="info-label">駐輪</span><span class="info-val">駐車場1台あり</span></div>
       </div>
       <div class="map-card">
         <h3>地図</h3>
@@ -399,6 +446,29 @@ footer p{font-size:11px;color:#666;margin-top:16px;}
         </div>
         <a class="map-btn" href="https://maps.google.com/?q=埼玉県越谷市南町2丁目10-14" target="_blank">Googleマップで開く</a>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="contact-section" id="contact">
+  <div class="contact-inner">
+    <div class="section-header reveal">
+      <div class="section-en">CONTACT</div>
+      <div class="section-ja">お問い合わせ</div>
+      <div class="section-line"></div>
+    </div>
+    <div class="contact-form reveal">
+      <div class="form-group">
+        <label class="form-label">お名前</label>
+        <input type="text" id="contact-name" class="form-input" placeholder="山田 太郎">
+      </div>
+      <div class="form-group">
+        <label class="form-label">メッセージ</label>
+        <textarea id="contact-msg" class="form-textarea" placeholder="ご質問・ご要望などをお気軽にどうぞ"></textarea>
+      </div>
+      <button class="form-btn" id="contact-btn" onclick="submitContact()">送信する</button>
+      <div class="form-msg" id="contact-result"></div>
     </div>
   </div>
 </div>
@@ -420,9 +490,220 @@ footer p{font-size:11px;color:#666;margin-top:16px;}
     <small>CREPE ROJIURA / KOSHIGAYA</small>
   </div>
   <p>© 2025 クレープ ろじうら. All Rights Reserved.</p>
+  <br>
+  <a href="#" class="footer-admin-link" onclick="openAdmin();return false;">管理者ページ</a>
 </footer>
 
+</div><!-- /#main-site -->
+
+<!-- ===== ADMIN PAGE ===== -->
+<div id="admin-page">
+  <div class="admin-nav">
+    <h1>🥞 ろじうら 管理ページ</h1>
+    <button class="admin-nav-btn" onclick="closeAdmin()">← サイトに戻る</button>
+  </div>
+  <div class="admin-body">
+    <div class="admin-tabs">
+      <button class="admin-tab active" onclick="switchAdminTab('notices')">📢 お知らせ</button>
+      <button class="admin-tab" onclick="switchAdminTab('menu')">🥞 メニュー</button>
+      <button class="admin-tab" onclick="switchAdminTab('inquiries')">✉️ 問い合わせ <span id="inq-badge"></span></button>
+    </div>
+
+    <!-- NOTICES -->
+    <div class="admin-panel active" id="admin-notices">
+      <div class="admin-card">
+        <h3>お知らせを追加</h3>
+        <div class="admin-form-group">
+          <label class="admin-label">タイトル</label>
+          <input type="text" id="n-title" class="admin-input" placeholder="例: 本日は臨時休業します">
+        </div>
+        <div class="admin-form-group">
+          <label class="admin-label">内容</label>
+          <textarea id="n-body" class="admin-textarea" placeholder="詳しい内容を入力してください"></textarea>
+        </div>
+        <button class="admin-btn" onclick="addNotice()">追加する</button>
+        <div class="admin-msg" id="notice-admin-msg"></div>
+      </div>
+      <div class="admin-card">
+        <h3>現在のお知らせ一覧</h3>
+        <div id="admin-notice-list" class="admin-list"></div>
+      </div>
+    </div>
+
+    <!-- MENU -->
+    <div class="admin-panel" id="admin-menu">
+      <div class="admin-card">
+        <h3>メニューを追加</h3>
+        <div class="admin-row">
+          <div class="admin-form-group">
+            <label class="admin-label">メニュー名</label>
+            <input type="text" id="m-name" class="admin-input" placeholder="例: いちごクリーム">
+          </div>
+          <div class="admin-form-group">
+            <label class="admin-label">価格（税込）</label>
+            <input type="number" id="m-price" class="admin-input" placeholder="例: 650">
+          </div>
+        </div>
+        <div class="admin-row">
+          <div class="admin-form-group">
+            <label class="admin-label">カテゴリ</label>
+            <select id="m-cat" class="admin-select">
+              <option value="crepe">クレープ</option>
+              <option value="drink">ドリンク</option>
+              <option value="alcohol">アルコール</option>
+            </select>
+          </div>
+          <div class="admin-form-group">
+            <label class="admin-label">バッジ</label>
+            <select id="m-badge" class="admin-select">
+              <option value="">なし</option>
+              <option value="popular">人気</option>
+              <option value="new-item">NEW</option>
+              <option value="limited">季節限定</option>
+            </select>
+          </div>
+        </div>
+        <div class="admin-form-group">
+          <label class="admin-label">番号・補足（任意）</label>
+          <input type="text" id="m-num" class="admin-input" placeholder="例: No.13">
+        </div>
+        <button class="admin-btn" onclick="addMenuItem()">追加する</button>
+        <div class="admin-msg" id="menu-admin-msg"></div>
+      </div>
+      <div class="admin-card">
+        <h3>Firestoreメニュー一覧</h3>
+        <p style="font-size:12px;color:#999;margin-bottom:12px;">※ここに表示されるのはFirestoreに追加したメニューのみです</p>
+        <div id="admin-menu-list" class="admin-list"></div>
+      </div>
+    </div>
+
+    <!-- INQUIRIES -->
+    <div class="admin-panel" id="admin-inquiries">
+      <div class="admin-card">
+        <h3>お問い合わせ一覧</h3>
+        <div id="admin-inq-list"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Firebase SDK -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, query, orderBy, serverTimestamp, onSnapshot }
+  from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCJ43W-7afDkW4IgA_bPBw42rsEELhC2Vc",
+  authDomain: "rideconnect-dbcb8.firebaseapp.com",
+  projectId: "rideconnect-dbcb8",
+  storageBucket: "rideconnect-dbcb8.appspot.com",
+  messagingSenderId: "placeholder",
+  appId: "placeholder"
+};
+
+const app = initializeApp(firebaseConfig, "rodjiura");
+const db = getFirestore(app);
+
+// ======= NOTICES =======
+const noticesCol = collection(db, "rodjiura_notices");
+
+function renderNotices(docs){
+  const list = document.getElementById('notice-list');
+  const adminList = document.getElementById('admin-notice-list');
+  const section = document.getElementById('notice-section');
+  list.innerHTML = '';
+  adminList.innerHTML = '';
+  if(docs.length === 0){
+    section.classList.remove('has-notices');
+    adminList.innerHTML = '<p style="font-size:13px;color:#999;">お知らせはまだありません</p>';
+    return;
+  }
+  section.classList.add('has-notices');
+  docs.forEach(d => {
+    const data = d.data();
+    const date = data.createdAt ? new Date(data.createdAt.seconds*1000).toLocaleDateString('ja-JP') : '';
+    // public
+    list.innerHTML += `<div class="notice-item"><div class="notice-date">${date}</div><div class="notice-text"><strong>${data.title||''}</strong>${data.body ? '<br>'+data.body : ''}</div></div>`;
+    // admin
+    adminList.innerHTML += `<div class="admin-list-item"><div class="item-content"><div class="item-title">${data.title||''}</div><div class="item-sub">${date}${data.body ? ' — '+data.body.substring(0,40)+'...' : ''}</div></div><div class="item-actions"><button class="item-btn item-btn-del" onclick="window._delNotice('${d.id}')">削除</button></div></div>`;
+  });
+}
+
+onSnapshot(query(noticesCol, orderBy('createdAt','desc')), snap => {
+  renderNotices(snap.docs);
+});
+
+window._addNotice = async (title, body) => {
+  await addDoc(noticesCol, { title, body, createdAt: serverTimestamp() });
+};
+window._delNotice = async (id) => {
+  if(confirm('削除しますか？')) await deleteDoc(doc(db,'rodjiura_notices',id));
+};
+
+// ======= MENU =======
+const menuCol = collection(db, "rodjiura_menu");
+
+function renderAdminMenu(docs){
+  const list = document.getElementById('admin-menu-list');
+  list.innerHTML = '';
+  if(docs.length === 0){ list.innerHTML = '<p style="font-size:13px;color:#999;">まだありません</p>'; return; }
+  docs.forEach(d => {
+    const data = d.data();
+    list.innerHTML += `<div class="admin-list-item"><div class="item-content"><div class="item-title">${data.name} — ¥${data.price}</div><div class="item-sub">${data.category} / ${data.badge||'バッジなし'} / ${data.num||''}</div></div><div class="item-actions"><button class="item-btn item-btn-del" onclick="window._delMenu('${d.id}')">削除</button></div></div>`;
+  });
+}
+
+onSnapshot(query(menuCol, orderBy('createdAt','desc')), snap => {
+  renderAdminMenu(snap.docs);
+  // クレープタブに動的追加アイテムを表示
+  const grid = document.getElementById('crepe-grid');
+  const dynamicItems = grid.querySelectorAll('.dynamic-item');
+  dynamicItems.forEach(el => el.remove());
+  snap.docs.filter(d=>d.data().category==='crepe').forEach(d=>{
+    const data = d.data();
+    const card = document.createElement('div');
+    card.className = 'menu-card dynamic-item' + (data.badge ? ' '+data.badge : '');
+    card.innerHTML = `<div class="menu-num">${data.num||''}</div><div class="menu-name">${data.name}</div><div class="menu-price">¥${data.price}<small> 税込</small></div>`;
+    grid.appendChild(card);
+  });
+});
+
+window._addMenu = async (name, price, category, badge, num) => {
+  await addDoc(menuCol, { name, price, category, badge, num, createdAt: serverTimestamp() });
+};
+window._delMenu = async (id) => {
+  if(confirm('削除しますか？')) await deleteDoc(doc(db,'rodjiura_menu',id));
+};
+
+// ======= CONTACT =======
+const contactCol = collection(db, "rodjiura_contacts");
+
+window._submitContact = async (name, msg) => {
+  await addDoc(contactCol, { name, message: msg, createdAt: serverTimestamp(), read: false });
+};
+
+function renderInquiries(docs){
+  const list = document.getElementById('admin-inq-list');
+  const badge = document.getElementById('inq-badge');
+  list.innerHTML = '';
+  if(docs.length === 0){ list.innerHTML = '<p style="font-size:13px;color:#999;">まだお問い合わせはありません</p>'; badge.innerHTML=''; return; }
+  badge.innerHTML = `<span class="badge-new">${docs.length}</span>`;
+  docs.forEach(d => {
+    const data = d.data();
+    const date = data.createdAt ? new Date(data.createdAt.seconds*1000).toLocaleString('ja-JP') : '';
+    list.innerHTML += `<div class="inquiry-item"><div class="inq-name">${data.name||'（名前なし）'}</div><div class="inq-date">${date}</div><div class="inq-msg">${(data.message||'').replace(/\n/g,'<br>')}</div></div>`;
+  });
+}
+
+onSnapshot(query(contactCol, orderBy('createdAt','desc')), snap => {
+  renderInquiries(snap.docs);
+});
+
+</script>
+
 <script>
+// ======= タブ切り替え =======
 function switchTab(name){
   document.querySelectorAll('.menu-tab').forEach((t,i)=>{
     const names=['crepe','drink','alcohol'];
@@ -432,10 +713,110 @@ function switchTab(name){
     p.classList.toggle('active',p.id==='tab-'+name);
   });
 }
+
+function switchAdminTab(name){
+  document.querySelectorAll('.admin-tab').forEach((t,i)=>{
+    const names=['notices','menu','inquiries'];
+    t.classList.toggle('active',names[i]===name);
+  });
+  document.querySelectorAll('.admin-panel').forEach(p=>{
+    p.classList.toggle('active',p.id==='admin-'+name);
+  });
+}
+
+// ======= Scroll reveal =======
 const observer=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
 },{threshold:0.1});
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+// ======= ADMIN =======
+const ADMIN_PW = 'rojiura2025';
+
+function openAdmin(){
+  document.getElementById('login-overlay').classList.add('show');
+}
+function closeAdmin(){
+  document.getElementById('login-overlay').classList.remove('show');
+  document.getElementById('admin-page').classList.remove('show');
+  document.getElementById('main-site').style.display = '';
+}
+function doLogin(){
+  const pw = document.getElementById('login-pw').value;
+  if(pw === ADMIN_PW){
+    document.getElementById('login-overlay').classList.remove('show');
+    document.getElementById('main-site').style.display = 'none';
+    document.getElementById('admin-page').classList.add('show');
+    document.getElementById('login-pw').value = '';
+    document.getElementById('login-error').style.display = 'none';
+  } else {
+    document.getElementById('login-error').style.display = 'block';
+  }
+}
+document.getElementById('login-pw').addEventListener('keydown', e => {
+  if(e.key === 'Enter') doLogin();
+});
+
+// ======= CONTACT SUBMIT =======
+async function submitContact(){
+  const name = document.getElementById('contact-name').value.trim();
+  const msg = document.getElementById('contact-msg').value.trim();
+  const result = document.getElementById('contact-result');
+  const btn = document.getElementById('contact-btn');
+  if(!name){ result.className='form-msg error'; result.textContent='お名前を入力してください'; return; }
+  if(!msg){ result.className='form-msg error'; result.textContent='メッセージを入力してください'; return; }
+  btn.disabled = true;
+  btn.textContent = '送信中...';
+  try {
+    await window._submitContact(name, msg);
+    result.className='form-msg success';
+    result.textContent='送信しました！ありがとうございます 🥞';
+    document.getElementById('contact-name').value = '';
+    document.getElementById('contact-msg').value = '';
+  } catch(e){
+    result.className='form-msg error';
+    result.textContent='送信に失敗しました。時間をおいてお試しください。';
+  }
+  btn.disabled = false;
+  btn.textContent = '送信する';
+}
+
+// ======= NOTICE ADD =======
+async function addNotice(){
+  const title = document.getElementById('n-title').value.trim();
+  const body = document.getElementById('n-body').value.trim();
+  const msg = document.getElementById('notice-admin-msg');
+  if(!title){ msg.className='admin-msg error'; msg.textContent='タイトルを入力してください'; return; }
+  try {
+    await window._addNotice(title, body);
+    msg.className='admin-msg success'; msg.textContent='追加しました！';
+    document.getElementById('n-title').value = '';
+    document.getElementById('n-body').value = '';
+  } catch(e){
+    msg.className='admin-msg error'; msg.textContent='エラーが発生しました: '+e.message;
+  }
+}
+
+// ======= MENU ADD =======
+async function addMenuItem(){
+  const name = document.getElementById('m-name').value.trim();
+  const price = document.getElementById('m-price').value.trim();
+  const category = document.getElementById('m-cat').value;
+  const badge = document.getElementById('m-badge').value;
+  const num = document.getElementById('m-num').value.trim();
+  const msg = document.getElementById('menu-admin-msg');
+  if(!name||!price){ msg.className='admin-msg error'; msg.textContent='名前と価格は必須です'; return; }
+  try {
+    await window._addMenu(name, parseInt(price), category, badge, num);
+    msg.className='admin-msg success'; msg.textContent='追加しました！';
+    document.getElementById('m-name').value = '';
+    document.getElementById('m-price').value = '';
+    document.getElementById('m-num').value = '';
+  } catch(e){
+    msg.className='admin-msg error'; msg.textContent='エラーが発生しました: '+e.message;
+  }
+}
 </script>
+
 </body>
 </html>
