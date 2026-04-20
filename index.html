@@ -238,7 +238,6 @@ footer p{font-size:11px;color:#666;margin-top:16px;}
   <div class="nav-links">
     <a href="#menu">メニュー</a>
     <a href="#info">アクセス</a>
-    <a href="#contact">お問い合わせ</a>
     <a href="https://www.instagram.com/creperodjiura/" target="_blank">Instagram</a>
   </div>
 </nav>
@@ -450,28 +449,7 @@ footer p{font-size:11px;color:#666;margin-top:16px;}
   </div>
 </div>
 
-<!-- CONTACT -->
-<div class="contact-section" id="contact">
-  <div class="contact-inner">
-    <div class="section-header reveal">
-      <div class="section-en">CONTACT</div>
-      <div class="section-ja">お問い合わせ</div>
-      <div class="section-line"></div>
-    </div>
-    <div class="contact-form reveal">
-      <div class="form-group">
-        <label class="form-label">お名前</label>
-        <input type="text" id="contact-name" class="form-input" placeholder="山田 太郎">
-      </div>
-      <div class="form-group">
-        <label class="form-label">メッセージ</label>
-        <textarea id="contact-msg" class="form-textarea" placeholder="ご質問・ご要望などをお気軽にどうぞ"></textarea>
-      </div>
-      <button class="form-btn" id="contact-btn" onclick="submitContact()">送信する</button>
-      <div class="form-msg" id="contact-result"></div>
-    </div>
-  </div>
-</div>
+
 
 <!-- SNS -->
 <div class="sns-section reveal">
@@ -514,11 +492,15 @@ footer p{font-size:11px;color:#666;margin-top:16px;}
       <div class="admin-card">
         <h3>お知らせを追加</h3>
         <div class="admin-form-group">
+          <label class="admin-label">⚡ かんたん例文</label>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;" id="template-btns"></div>
+        </div>
+        <div class="admin-form-group">
           <label class="admin-label">タイトル</label>
           <input type="text" id="n-title" class="admin-input" placeholder="例: 本日は臨時休業します">
         </div>
         <div class="admin-form-group">
-          <label class="admin-label">内容</label>
+          <label class="admin-label">内容（任意）</label>
           <textarea id="n-body" class="admin-textarea" placeholder="詳しい内容を入力してください"></textarea>
         </div>
         <button class="admin-btn" onclick="addNotice()">追加する</button>
@@ -757,29 +739,31 @@ document.getElementById('login-pw').addEventListener('keydown', e => {
   if(e.key === 'Enter') doLogin();
 });
 
-// ======= CONTACT SUBMIT =======
-async function submitContact(){
-  const name = document.getElementById('contact-name').value.trim();
-  const msg = document.getElementById('contact-msg').value.trim();
-  const result = document.getElementById('contact-result');
-  const btn = document.getElementById('contact-btn');
-  if(!name){ result.className='form-msg error'; result.textContent='お名前を入力してください'; return; }
-  if(!msg){ result.className='form-msg error'; result.textContent='メッセージを入力してください'; return; }
-  btn.disabled = true;
-  btn.textContent = '送信中...';
-  try {
-    await window._submitContact(name, msg);
-    result.className='form-msg success';
-    result.textContent='送信しました！ありがとうございます 🥞';
-    document.getElementById('contact-name').value = '';
-    document.getElementById('contact-msg').value = '';
-  } catch(e){
-    result.className='form-msg error';
-    result.textContent='送信に失敗しました。時間をおいてお試しください。';
-  }
-  btn.disabled = false;
-  btn.textContent = '送信する';
-}
+// ======= NOTICE TEMPLATES =======
+const NOTICE_TEMPLATES = [
+  { label: '🥞 生地売り切れ閉店', title: '本日生地売り切れのため閉店しました', body: '本日も多くのお客様にご来店いただきありがとうございました。' },
+  { label: '🚫 本日臨時休業', title: '本日は臨時休業いたします', body: 'ご不便をおかけして申し訳ございません。' },
+  { label: '🚫 明日臨時休業', title: '明日は臨時休業いたします', body: 'ご不便をおかけして申し訳ございません。' },
+  { label: '✅ 通常営業中', title: '本日は通常通り営業中です', body: '11:00〜19:00 皆さまのご来店をお待ちしております！' },
+  { label: '🌧 悪天候休業', title: '悪天候のため本日臨時休業いたします', body: 'ご不便をおかけして申し訳ございません。次回の営業をお待ちください。' },
+  { label: '🍓 季節限定入荷', title: '季節限定メニューが入荷しました！', body: 'ぜひお早めにお越しください🥞' },
+];
+
+document.addEventListener('DOMContentLoaded', () => {
+  const container = document.getElementById('template-btns');
+  if(!container) return;
+  NOTICE_TEMPLATES.forEach(t => {
+    const btn = document.createElement('button');
+    btn.className = 'admin-btn admin-btn-secondary';
+    btn.style.cssText = 'font-size:11px;padding:7px 12px;border-radius:12px;';
+    btn.textContent = t.label;
+    btn.onclick = () => {
+      document.getElementById('n-title').value = t.title;
+      document.getElementById('n-body').value = t.body;
+    };
+    container.appendChild(btn);
+  });
+});
 
 // ======= NOTICE ADD =======
 async function addNotice(){
