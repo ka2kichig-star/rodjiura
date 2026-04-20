@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>クレープ ろじうら | 越谷市南町</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#fdf6ed;
+  --dark:#1c1410;
+  --brown:#3d2314;
+  --caramel:#c8762a;
+  --gold:#e8a84b;
+  --light:#faf3e8;
+  --gray:#8a7a6e;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--cream);color:var(--dark);font-family:'Noto Sans JP',sans-serif;overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;background:rgba(253,246,237,0.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(200,118,42,0.15);}
+.nav-logo{font-family:'Zen Maru Gothic',sans-serif;font-size:17px;letter-spacing:4px;color:var(--brown);font-weight:800;}
+.nav-logo small{display:block;font-size:9px;letter-spacing:3px;color:var(--caramel);font-weight:400;margin-top:1px;}
+.nav-links{display:flex;gap:20px;}
+.nav-links a{font-size:12px;color:var(--gray);text-decoration:none;letter-spacing:1px;transition:color .2s;}
+.nav-links a:hover{color:var(--caramel);}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 24px 60px;position:relative;overflow:hidden;background:linear-gradient(160deg,#fdf0dc 0%,var(--cream) 50%,#f5e8d5 100%);}
+.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c8762a' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");pointer-events:none;}
+.hero-badge{display:inline-block;background:rgba(200,118,42,0.1);border:1px solid rgba(200,118,42,0.3);color:var(--caramel);font-size:10px;letter-spacing:3px;padding:6px 18px;border-radius:20px;margin-bottom:24px;animation:fadeUp .8s ease both;}
+.hero h1{font-family:'Zen Maru Gothic',sans-serif;font-size:clamp(38px,10vw,72px);font-weight:800;letter-spacing:6px;line-height:1.2;color:var(--brown);margin-bottom:4px;animation:fadeUp .8s .1s ease both;}
+.hero-en{font-size:clamp(10px,2vw,13px);letter-spacing:8px;color:var(--caramel);margin-bottom:20px;animation:fadeUp .8s .15s ease both;}
+.hero-desc{font-size:14px;color:var(--gray);line-height:2;max-width:320px;margin:0 auto 36px;animation:fadeUp .8s .2s ease both;}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;animation:fadeUp .8s .3s ease both;}
+.btn-main{background:var(--caramel);color:#fff;font-size:13px;font-weight:700;padding:13px 28px;border-radius:25px;border:none;cursor:pointer;text-decoration:none;letter-spacing:1px;transition:transform .2s,box-shadow .2s;}
+.btn-main:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(200,118,42,0.35);}
+.btn-sub{background:transparent;color:var(--brown);font-size:13px;font-weight:500;padding:13px 24px;border-radius:25px;border:1px solid rgba(61,35,20,0.2);cursor:pointer;text-decoration:none;transition:border-color .2s;}
+.btn-sub:hover{border-color:var(--caramel);}
+.hero-info{margin-top:48px;display:flex;gap:28px;justify-content:center;flex-wrap:wrap;animation:fadeUp .8s .4s ease both;}
+.hero-info-item{text-align:center;}
+.hero-info-item .label{font-size:9px;letter-spacing:2px;color:var(--gray);text-transform:uppercase;margin-bottom:4px;}
+.hero-info-item .val{font-family:'Zen Maru Gothic',sans-serif;font-size:14px;color:var(--brown);font-weight:600;}
+
+/* SECTION */
+.section{padding:72px 24px;max-width:800px;margin:0 auto;}
+.section-header{text-align:center;margin-bottom:48px;}
+.section-en{font-size:10px;letter-spacing:4px;color:var(--caramel);text-transform:uppercase;margin-bottom:8px;}
+.section-ja{font-family:'Zen Maru Gothic',sans-serif;font-size:clamp(22px,5vw,32px);font-weight:800;color:var(--brown);letter-spacing:2px;}
+.section-line{width:40px;height:2px;background:var(--caramel);margin:14px auto 0;}
+
+/* ABOUT */
+.about{background:var(--light);padding:72px 24px;}
+.about-inner{max-width:800px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
+.about-text p{font-size:14px;color:#5a4a3a;line-height:2.2;margin-bottom:16px;}
+.about-facts{display:flex;flex-direction:column;gap:16px;}
+.fact-item{background:#fff;border-radius:12px;padding:16px 20px;border-left:3px solid var(--caramel);}
+.fact-item .fact-label{font-size:10px;letter-spacing:2px;color:var(--caramel);margin-bottom:4px;}
+.fact-item .fact-val{font-size:14px;font-weight:700;color:var(--brown);}
+
+/* MENU */
+.menu-bg{background:var(--dark);padding:72px 24px;}
+.menu-bg .section-ja{color:var(--cream);}
+.menu-bg .section-en{color:var(--caramel);}
+.menu-tabs{display:flex;justify-content:center;gap:8px;margin-bottom:36px;}
+.menu-tab{padding:8px 20px;border-radius:20px;border:1px solid rgba(255,255,255,0.2);background:transparent;color:#aaa;font-size:12px;font-family:'Noto Sans JP',sans-serif;cursor:pointer;transition:all .2s;letter-spacing:1px;}
+.menu-tab.active{background:var(--caramel);border-color:var(--caramel);color:#fff;}
+.menu-panel{display:none;}
+.menu-panel.active{display:block;}
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;max-width:800px;margin:0 auto;}
+.menu-card{background:#2a1f17;border-radius:16px;padding:20px;border:1px solid rgba(255,255,255,0.05);transition:transform .2s,border-color .2s;position:relative;}
+.menu-card:hover{transform:translateY(-3px);border-color:rgba(200,118,42,0.3);}
+.menu-card.popular::before{content:'人気';position:absolute;top:12px;right:12px;background:var(--caramel);color:#fff;font-size:10px;font-weight:700;padding:3px 8px;border-radius:8px;}
+.menu-card.new-item::before{content:'NEW';position:absolute;top:12px;right:12px;background:#e05a2b;color:#fff;font-size:10px;font-weight:700;padding:3px 8px;border-radius:8px;}
+.menu-card.limited::before{content:'季節限定';position:absolute;top:12px;right:12px;background:#c0392b;color:#fff;font-size:10px;font-weight:700;padding:3px 8px;border-radius:8px;}
+.menu-num{font-size:11px;color:var(--caramel);letter-spacing:1px;margin-bottom:6px;}
+.menu-name{font-size:15px;font-weight:700;color:var(--cream);margin-bottom:8px;line-height:1.4;}
+.menu-price{font-family:'Zen Maru Gothic',sans-serif;font-size:22px;font-weight:800;color:var(--gold);}
+.menu-price small{font-size:12px;font-weight:400;color:#888;}
+
+.drink-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:800px;margin:0 auto;}
+.drink-section-title{color:var(--caramel);font-size:11px;letter-spacing:3px;margin-bottom:12px;grid-column:1/-1;}
+.drink-item{background:#2a1f17;border-radius:12px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;border:1px solid rgba(255,255,255,0.05);}
+.drink-name{font-size:13px;color:var(--cream);}
+.drink-name small{display:block;font-size:10px;color:#888;margin-top:2px;}
+.drink-prices{text-align:right;}
+.drink-price-row{font-size:12px;color:var(--gold);}
+.drink-price-row span{color:#888;font-size:10px;margin-right:4px;}
+
+/* MAP & INFO */
+.info-section{padding:72px 24px;background:var(--light);}
+.info-inner{max-width:800px;margin:0 auto;}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:40px;}
+.info-card{background:#fff;border-radius:16px;padding:24px;}
+.info-card h3{font-family:'Zen Maru Gothic',sans-serif;font-size:16px;font-weight:800;color:var(--brown);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid #f0e8dc;}
+.info-row{display:flex;gap:12px;margin-bottom:12px;font-size:13px;align-items:flex-start;}
+.info-row .info-label{color:var(--caramel);font-size:10px;letter-spacing:1px;white-space:nowrap;margin-top:2px;}
+.info-row .info-val{color:var(--dark);line-height:1.7;}
+.map-card{background:#fff;border-radius:16px;padding:24px;}
+.map-card h3{font-family:'Zen Maru Gothic',sans-serif;font-size:16px;font-weight:800;color:var(--brown);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid #f0e8dc;}
+.map-embed{border-radius:10px;overflow:hidden;width:100%;}
+.map-btn{display:block;text-align:center;margin-top:12px;background:var(--caramel);color:#fff;font-size:13px;font-weight:700;padding:11px;border-radius:20px;text-decoration:none;transition:opacity .2s;}
+.map-btn:hover{opacity:.85;}
+
+/* SNS */
+.sns-section{padding:48px 24px;text-align:center;}
+.sns-section p{font-size:13px;color:var(--gray);margin-bottom:20px;}
+.sns-btn{display:inline-flex;align-items:center;gap:8px;background:var(--dark);color:#fff;font-size:13px;font-weight:700;padding:12px 24px;border-radius:25px;text-decoration:none;transition:opacity .2s;}
+.sns-btn:hover{opacity:.8;}
+
+/* FOOTER */
+footer{background:var(--dark);padding:40px 24px;text-align:center;}
+.footer-logo{font-family:'Zen Maru Gothic',sans-serif;font-size:20px;letter-spacing:6px;color:var(--cream);margin-bottom:8px;}
+.footer-logo small{display:block;font-size:9px;letter-spacing:3px;color:var(--caramel);}
+footer p{font-size:11px;color:#666;margin-top:16px;}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+@media(max-width:600px){
+  .about-inner{grid-template-columns:1fr;}
+  .info-grid{grid-template-columns:1fr;}
+  .drink-grid{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    クレープ ろじうら
+    <small>CREPE ROJIURA</small>
+  </div>
+  <div class="nav-links">
+    <a href="#menu">メニュー</a>
+    <a href="#info">アクセス</a>
+    <a href="https://www.instagram.com/creperodjiura/" target="_blank">Instagram</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">🥞 越谷市南町の路地裏クレープ</div>
+  <h1>クレープ<br>ろじうら</h1>
+  <div class="hero-en">CREPE ROJIURA</div>
+  <p class="hero-desc">注文を受けてから1枚ずつ丁寧に焼き上げる、<br>こだわりのクレープをどうぞ。</p>
+  <div class="hero-btns">
+    <a class="btn-main" href="#menu">メニューを見る</a>
+    <a class="btn-sub" href="#info">アクセス</a>
+  </div>
+  <div class="hero-info">
+    <div class="hero-info-item">
+      <div class="label">営業日</div>
+      <div class="val">月・金・土・日・祝</div>
+    </div>
+    <div class="hero-info-item">
+      <div class="label">営業時間</div>
+      <div class="val">11:00〜19:00</div>
+    </div>
+    <div class="hero-info-item">
+      <div class="label">定休日</div>
+      <div class="val">火・水・木</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div class="about">
+  <div class="about-inner reveal">
+    <div class="about-text">
+      <div class="section-en" style="margin-bottom:8px;">OUR STORY</div>
+      <div class="section-ja" style="text-align:left;font-family:'Zen Maru Gothic',sans-serif;font-size:24px;font-weight:800;color:var(--brown);margin-bottom:20px;">夫婦の夢から<br>生まれたお店</div>
+      <p>住宅街の路地裏にひっそりと佇む、一軒家のクレープ屋さん。「いつかクレープ屋さんをやりたい」という夢を、夫婦ふたりでかたちにしました。</p>
+      <p>自分が心から「おいしい」と思えるクレープを届けたい——その想いが、クレープ一枚一枚に丁寧に込められています。</p>
+    </div>
+    <div class="about-facts">
+      <div class="fact-item">
+        <div class="fact-label">こだわり</div>
+        <div class="fact-val">注文後に1枚ずつ焼き上げ</div>
+      </div>
+      <div class="fact-item">
+        <div class="fact-label">ペット</div>
+        <div class="fact-val">愛犬連れOK・テラス席あり</div>
+      </div>
+      <div class="fact-item">
+        <div class="fact-label">支払い</div>
+        <div class="fact-val">PayPay対応</div>
+      </div>
+      <div class="fact-item">
+        <div class="fact-label">オープン</div>
+        <div class="fact-val">2025年2月2日</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MENU -->
+<div class="menu-bg" id="menu">
+  <div style="max-width:800px;margin:0 auto;">
+    <div class="section-header reveal">
+      <div class="section-en">MENU</div>
+      <div class="section-ja" style="color:var(--cream);">メニュー</div>
+      <div class="section-line"></div>
+      <p style="font-size:12px;color:#888;margin-top:12px;">税込み価格です</p>
+    </div>
+
+    <div class="menu-tabs reveal">
+      <button class="menu-tab active" onclick="switchTab('crepe')">クレープ</button>
+      <button class="menu-tab" onclick="switchTab('drink')">ドリンク</button>
+      <button class="menu-tab" onclick="switchTab('alcohol')">アルコール</button>
+    </div>
+
+    <!-- CREPE -->
+    <div class="menu-panel active" id="tab-crepe">
+      <div class="menu-grid">
+        <div class="menu-card popular">
+          <div class="menu-num">No.1 人気</div>
+          <div class="menu-name">チョコバナナクリーム</div>
+          <div class="menu-price">¥600<small> 税込</small></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-num">No.2</div>
+          <div class="menu-name">バナナクリーム</div>
+          <div class="menu-price">¥580<small> 税込</small></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-num">No.3</div>
+          <div class="menu-name">バナナカスタード</div>
+          <div class="menu-price">¥650<small> 税込</small></div>
+        </div>
+        <div class="menu-card popular">
+          <div class="menu-num">No.4 人気2位</div>
+          <div class="menu-name">バナナクリーム＆カスタード</div>
+          <div class="menu-price">¥650<small> 税込</small></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-num">No.5</div>
+          <div class="menu-name">クリーム＆カスタード</div>
+          <div class="menu-price">¥550<small> 税込</small></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-num">No.6</div>
+          <div class="menu-name">クリームチョコ</div>
+          <div class="menu-price">¥500<small> 税込</small></div>
+        </div>
+        <div class="menu-card popular">
+          <div class="menu-num">No.7 人気3位</div>
+          <div class="menu-name">カスタードブリュレ</div>
+          <div class="menu-price">¥700<small> 税込</small></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-num">No.8</div>
+          <div class="menu-name">バターシュガー</div>
+          <div class="menu-price">¥500<small> 税込</small></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-num">No.9</div>
+          <div class="menu-name">ツナマヨと野菜</div>
+          <div class="menu-price">¥550<small> 税込</small></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-num">No.10</div>
+          <div class="menu-name">チーズハムマヨと野菜</div>
+          <div class="menu-price">¥600<small> 税込</small></div>
+        </div>
+        <div class="menu-card new-item">
+          <div class="menu-num">No.11 NEW</div>
+          <div class="menu-name">マロンモンブランクリーム</div>
+          <div class="menu-price">¥700<small> 税込</small></div>
+        </div>
+        <div class="menu-card limited">
+          <div class="menu-num">季節限定</div>
+          <div class="menu-name">いちごチョコクレープ</div>
+          <div class="menu-price">¥750<small> 税込</small></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DRINK -->
+    <div class="menu-panel" id="tab-drink">
+      <div class="drink-grid" style="max-width:600px;margin:0 auto;">
+        <div class="drink-section-title">☕ ドリンクメニュー</div>
+        <div class="drink-item">
+          <div class="drink-name">コーヒー</div>
+          <div class="drink-prices">
+            <div class="drink-price-row"><span>HOT</span>¥350</div>
+            <div class="drink-price-row"><span>ICE</span>¥400</div>
+          </div>
+        </div>
+        <div class="drink-item">
+          <div class="drink-name">カフェオレ</div>
+          <div class="drink-prices">
+            <div class="drink-price-row"><span>HOT</span>¥450</div>
+            <div class="drink-price-row"><span>ICE</span>¥500</div>
+          </div>
+        </div>
+        <div class="drink-item">
+          <div class="drink-name">ほうじ茶ラテ</div>
+          <div class="drink-prices">
+            <div class="drink-price-row"><span>HOT</span>¥500</div>
+            <div class="drink-price-row"><span>ICE</span>¥550</div>
+          </div>
+        </div>
+        <div class="drink-item">
+          <div class="drink-name">紅茶<small>Earl Grey</small></div>
+          <div class="drink-prices">
+            <div class="drink-price-row"><span>HOT</span>¥500</div>
+          </div>
+        </div>
+        <div class="drink-item">
+          <div class="drink-name">ウーロン茶</div>
+          <div class="drink-prices"><div class="drink-price-row">¥300</div></div>
+        </div>
+        <div class="drink-item">
+          <div class="drink-name">オレンジジュース</div>
+          <div class="drink-prices"><div class="drink-price-row">¥300</div></div>
+        </div>
+        <div class="drink-item">
+          <div class="drink-name">アップルジュース</div>
+          <div class="drink-prices"><div class="drink-price-row">¥300</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ALCOHOL -->
+    <div class="menu-panel" id="tab-alcohol">
+      <div class="drink-grid" style="max-width:500px;margin:0 auto;">
+        <div class="drink-section-title">🍺 アルコールメニュー</div>
+        <div class="drink-item">
+          <div class="drink-name">バドワイザー<small>瓶 330ml</small></div>
+          <div class="drink-prices"><div class="drink-price-row">¥500</div></div>
+        </div>
+        <div class="drink-item">
+          <div class="drink-name">ハイネケン<small>瓶 330ml</small></div>
+          <div class="drink-prices"><div class="drink-price-row">¥600</div></div>
+        </div>
+        <div class="drink-item">
+          <div class="drink-name">レモンサワー</div>
+          <div class="drink-prices"><div class="drink-price-row">¥400</div></div>
+        </div>
+        <div class="drink-item">
+          <div class="drink-name">MIXナッツ<small>アルコール注文時限り</small></div>
+          <div class="drink-prices"><div class="drink-price-row">¥200</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- INFO -->
+<div class="info-section" id="info">
+  <div class="info-inner">
+    <div class="section-header reveal">
+      <div class="section-en">ACCESS & INFO</div>
+      <div class="section-ja">アクセス・店舗情報</div>
+      <div class="section-line"></div>
+    </div>
+    <div class="info-grid reveal">
+      <div class="info-card">
+        <h3>店舗情報</h3>
+        <div class="info-row">
+          <span class="info-label">住所</span>
+          <span class="info-val">埼玉県越谷市南町2丁目10-14</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">営業時間</span>
+          <span class="info-val">11:00〜19:00<br><small style="color:#999">生地がなくなり次第閉店</small></span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">営業日</span>
+          <span class="info-val">月・金・土・日・祝日</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">定休日</span>
+          <span class="info-val">火・水・木曜日</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">最寄駅</span>
+          <span class="info-val">新田駅（東口）徒歩約16分</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">支払い</span>
+          <span class="info-val">PayPay対応・現金</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">駐輪</span>
+          <span class="info-val">駐車場1台あり</span>
+        </div>
+      </div>
+      <div class="map-card">
+        <h3>地図</h3>
+        <div class="map-embed">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3235.8!2d139.784!3d35.877!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzXCsDUyJzM3LjIiTiAxMznCsDQ3JzAyLjQiRQ!5e0!3m2!1sja!2sjp!4v1" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+        <a class="map-btn" href="https://maps.google.com/?q=埼玉県越谷市南町2丁目10-14" target="_blank">Googleマップで開く</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SNS -->
+<div class="sns-section reveal">
+  <div class="section-en" style="color:var(--caramel);font-size:10px;letter-spacing:4px;margin-bottom:8px;">FOLLOW US</div>
+  <div class="section-ja" style="font-family:'Zen Maru Gothic',sans-serif;font-size:22px;font-weight:800;color:var(--brown);margin-bottom:12px;">Instagram</div>
+  <p>最新情報や季節限定メニューはInstagramで発信中！</p>
+  <a class="sns-btn" href="https://www.instagram.com/creperodjiura/" target="_blank">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+    @creperodjiura
+  </a>
+</div>
+
+<footer>
+  <div class="footer-logo">
+    クレープ ろじうら
+    <small>CREPE ROJIURA / KOSHIGAYA</small>
+  </div>
+  <p>© 2025 クレープ ろじうら. All Rights Reserved.</p>
+</footer>
+
+<script>
+function switchTab(name){
+  document.querySelectorAll('.menu-tab').forEach((t,i)=>{
+    const names=['crepe','drink','alcohol'];
+    t.classList.toggle('active',names[i]===name);
+  });
+  document.querySelectorAll('.menu-panel').forEach(p=>{
+    p.classList.toggle('active',p.id==='tab-'+name);
+  });
+}
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>
