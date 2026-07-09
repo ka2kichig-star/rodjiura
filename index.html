@@ -221,9 +221,10 @@ footer p{font-size:11px;color:#666;margin-top:16px;}
   <div class="login-box">
     <h2>管理者ログイン</h2>
     <p>クレープ ろじうら 管理ページ</p>
-    <input type="password" id="login-pw" class="login-input" placeholder="パスワード" maxlength="20">
-    <button class="login-btn" onclick="doLogin()">ログイン</button>
-    <div class="login-error" id="login-error">パスワードが違います</div>
+    <input type="email" id="login-email" class="login-input" placeholder="メールアドレス" autocomplete="username" style="margin-bottom:10px;">
+    <input type="password" id="login-pw" class="login-input" placeholder="パスワード" autocomplete="current-password" maxlength="64">
+    <button class="login-btn" id="login-btn" onclick="doLogin()">ログイン</button>
+    <div class="login-error" id="login-error">メールアドレスまたはパスワードが違います</div>
     <button style="margin-top:16px;background:none;border:none;color:#aaa;font-size:12px;cursor:pointer;" onclick="closeAdmin()">← サイトに戻る</button>
   </div>
 </div>
@@ -597,6 +598,8 @@ footer p{font-size:11px;color:#666;margin-top:16px;}
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, query, orderBy, serverTimestamp, onSnapshot }
   from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged }
+  from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCJ43W-7afDkW4IgA_bPBw42rsEELhC2Vc",
@@ -609,6 +612,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig, "rodjiura");
 const db = getFirestore(app);
+const auth = getAuth(app);
 
 // ======= NOTICES =======
 const noticesCol = collection(db, "rodjiura_notices");
@@ -701,8 +705,39 @@ function renderInquiries(docs){
   });
 }
 
-onSnapshot(query(contactCol, orderBy('createdAt','desc')), snap => {
-  renderInquiries(snap.docs);
+// 問い合わせ一覧は管理者ログイン中のみ購読する（rulesで read は isAdmin() 限定）
+let unsubContacts = null;
+function startContactsListener(){
+  if(unsubContacts) return;
+  unsubContacts = onSnapshot(query(contactCol, orderBy('createdAt','desc')), snap => {
+    renderInquiries(snap.docs);
+  });
+}
+function stopContactsListener(){
+  if(unsubContacts){ unsubContacts(); unsubContacts = null; }
+  const list = document.getElementById('admin-inq-list');
+  if(list) list.innerHTML = '';
+  const badge = document.getElementById('inq-badge');
+  if(badge) badge.innerHTML = '';
+}
+
+// ======= AUTH（管理者ログイン）=======
+// 店主用 email/password アカウントに Admin SDK で admin:true クレームを付与しておくこと。
+// 付与手順は同ディレクトリの set-admin-claim.js を参照。
+window._adminLogin = async (email, password) => {
+  const cred = await signInWithEmailAndPassword(auth, email, password);
+  const token = await cred.user.getIdTokenResult();
+  if(token.claims.admin === true) return true;
+  await signOut(auth);                 // 権限のないアカウントは即ログアウト
+  throw new Error('このアカウントには管理者権限がありません');
+};
+window._adminLogout = () => signOut(auth);
+
+onAuthStateChanged(auth, async user => {
+  if(!user){ stopContactsListener(); return; }
+  const token = await user.getIdTokenResult();
+  if(token.claims.admin === true) startContactsListener();
+  else stopContactsListener();
 });
 
 </script>
@@ -736,8 +771,8 @@ const observer=new IntersectionObserver(entries=>{
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 
 // ======= ADMIN =======
-const ADMIN_PW = 'rojiura2025';
-
+// 認証は Firebase Auth（email/password + admin カスタムクレーム）で行う。
+// クレーム付与は set-admin-claim.js を参照。旧ハードコードPWは廃止。
 function openAdmin(){
   document.getElementById('login-overlay').classList.add('show');
 }
@@ -745,17 +780,30 @@ function closeAdmin(){
   document.getElementById('login-overlay').classList.remove('show');
   document.getElementById('admin-page').classList.remove('show');
   document.getElementById('main-site').style.display = '';
+  if(window._adminLogout) window._adminLogout();
 }
-function doLogin(){
+async function doLogin(){
+  const email = document.getElementById('login-email').value.trim();
   const pw = document.getElementById('login-pw').value;
-  if(pw === ADMIN_PW){
+  const errEl = document.getElementById('login-error');
+  const btn = document.getElementById('login-btn');
+  if(!email || !pw){ errEl.textContent = 'メールアドレスとパスワードを入力してください'; errEl.style.display = 'block'; return; }
+  btn.disabled = true; btn.textContent = 'ログイン中...';
+  try {
+    await window._adminLogin(email, pw);
     document.getElementById('login-overlay').classList.remove('show');
     document.getElementById('main-site').style.display = 'none';
     document.getElementById('admin-page').classList.add('show');
+    document.getElementById('login-email').value = '';
     document.getElementById('login-pw').value = '';
-    document.getElementById('login-error').style.display = 'none';
-  } else {
-    document.getElementById('login-error').style.display = 'block';
+    errEl.style.display = 'none';
+  } catch(e){
+    errEl.textContent = (e && e.code === 'auth/invalid-credential')
+      ? 'メールアドレスまたはパスワードが違います'
+      : (e && e.message) ? e.message : 'ログインに失敗しました';
+    errEl.style.display = 'block';
+  } finally {
+    btn.disabled = false; btn.textContent = 'ログイン';
   }
 }
 document.getElementById('login-pw').addEventListener('keydown', e => {

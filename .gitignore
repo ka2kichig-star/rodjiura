@@ -1,0 +1,7 @@
+# Firebase Admin SDK サービスアカウント鍵（絶対に公開しない）
+serviceAccountKey.json
+*serviceAccount*.json
+
+# Node
+node_modules/
+package-lock.json
