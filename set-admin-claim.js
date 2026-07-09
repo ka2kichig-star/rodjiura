@@ -25,8 +25,18 @@
  * =============================================================================
  */
 
-const admin = require('firebase-admin');
-const serviceAccount = require('./serviceAccountKey.json');
+// firebase-admin v13+ のモジュラーAPIを使用（旧 admin.credential.cert は廃止）
+const { initializeApp, cert } = require('firebase-admin/app');
+const { getAuth } = require('firebase-admin/auth');
+const fs = require('fs');
+
+// 鍵ファイル名は serviceAccountKey.json でも serviceAccountKey.json.json でも拾う
+const keyPath = ['./serviceAccountKey.json', './serviceAccountKey.json.json'].find(p => fs.existsSync(p));
+if (!keyPath) {
+  console.error('❌ serviceAccountKey.json が見つかりません。');
+  process.exit(1);
+}
+const serviceAccount = JSON.parse(fs.readFileSync(keyPath, 'utf8'));
 
 const email = process.env.ADMIN_EMAIL;
 const password = process.env.ADMIN_PASSWORD;
@@ -40,23 +50,24 @@ if (password.length < 10) {
   process.exit(1);
 }
 
-admin.initializeApp({ credential: admin.credential.cert(serviceAccount) });
+initializeApp({ credential: cert(serviceAccount) });
+const auth = getAuth();
 
 (async () => {
   try {
     let user;
     try {
-      user = await admin.auth().getUserByEmail(email);
+      user = await auth.getUserByEmail(email);
       console.log(`ℹ 既存アカウントを使用: ${email} (uid=${user.uid})`);
     } catch (e) {
       if (e.code === 'auth/user-not-found') {
-        user = await admin.auth().createUser({ email, password, emailVerified: true });
+        user = await auth.createUser({ email, password, emailVerified: true });
         console.log(`✅ アカウントを新規作成: ${email} (uid=${user.uid})`);
       } else {
         throw e;
       }
     }
-    await admin.auth().setCustomUserClaims(user.uid, { admin: true });
+    await auth.setCustomUserClaims(user.uid, { admin: true });
     console.log(`✅ admin:true クレームを付与しました (uid=${user.uid})`);
     console.log('   → 店主はこのメール/パスワードで管理画面にログインできます。');
     console.log('   → 既にログイン済みのセッションは、一度サインアウトすると新クレームが反映されます。');
