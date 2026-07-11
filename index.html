@@ -115,8 +115,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 20px;display:fl
 .map-card{background:#fff;border-radius:16px;padding:24px;}
 .map-card h3{font-family:'Zen Maru Gothic',sans-serif;font-size:16px;font-weight:800;color:var(--brown);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid #f0e8dc;}
 .map-embed{border-radius:10px;overflow:hidden;width:100%;}
-.map-btn{display:block;text-align:center;margin-top:12px;background:var(--caramel);color:#fff;font-size:13px;font-weight:700;padding:11px;border-radius:20px;text-decoration:none;transition:opacity .2s;}
+.map-btn{display:block;text-align:center;margin-top:12px;background:var(--caramel);color:#fff;font-size:13px;font-weight:700;padding:11px;border-radius:20px;text-decoration:none;transition:all .2s;}
 .map-btn:hover{opacity:.85;}
+.map-btn-sub{background:#fff;color:var(--brown);border:1.5px solid var(--caramel);}
+.map-btn-sub:hover{background:var(--cream);opacity:1;}
 
 /* CONTACT */
 .contact-section{padding:72px 24px;background:var(--cream);}
@@ -292,8 +294,16 @@ footer p{font-size:11px;color:#666;margin-top:16px;}
     </div>
     <div class="about-facts">
       <div class="fact-item">
-        <div class="fact-label">こだわり</div>
-        <div class="fact-val">注文後に1枚ずつ焼き上げ</div>
+        <div class="fact-label">焼き上げ</div>
+        <div class="fact-val">注文後に1枚ずつ焼き上げ<br><span style="font-size:13px;font-weight:500;color:#5a4a3a;">クリームが下までビッシリ入っている</span></div>
+      </div>
+      <div class="fact-item">
+        <div class="fact-label">紅茶</div>
+        <div class="fact-val">ティーポット提供</div>
+      </div>
+      <div class="fact-item">
+        <div class="fact-label">テイクアウト</div>
+        <div class="fact-val">-100円</div>
       </div>
       <div class="fact-item">
         <div class="fact-label">ペット</div>
@@ -301,7 +311,7 @@ footer p{font-size:11px;color:#666;margin-top:16px;}
       </div>
       <div class="fact-item">
         <div class="fact-label">支払い</div>
-        <div class="fact-val">PayPay対応</div>
+        <div class="fact-val">現金・PayPay対応</div>
       </div>
       <div class="fact-item">
         <div class="fact-label">オープン</div>
@@ -318,7 +328,7 @@ footer p{font-size:11px;color:#666;margin-top:16px;}
       <div class="section-en">MENU</div>
       <div class="section-ja" style="color:var(--cream);">メニュー</div>
       <div class="section-line"></div>
-      <p style="font-size:12px;color:#888;margin-top:12px;">税込み価格です</p>
+      <p style="font-size:13px;color:#8a7a6e;margin-top:12px;">税込み価格です / <strong style="color:var(--caramel);">テイクアウトは-100円</strong></p>
     </div>
 
     <div class="menu-tabs reveal">
@@ -423,7 +433,7 @@ footer p{font-size:11px;color:#666;margin-top:16px;}
         <div class="drink-item"><div class="drink-name">コーヒー</div><div class="drink-prices"><div class="drink-price-row"><span>HOT</span>¥350</div><div class="drink-price-row"><span>ICE</span>¥400</div></div></div>
         <div class="drink-item"><div class="drink-name">カフェオレ</div><div class="drink-prices"><div class="drink-price-row"><span>HOT</span>¥450</div><div class="drink-price-row"><span>ICE</span>¥500</div></div></div>
         <div class="drink-item"><div class="drink-name">ほうじ茶ラテ</div><div class="drink-prices"><div class="drink-price-row"><span>HOT</span>¥500</div><div class="drink-price-row"><span>ICE</span>¥550</div></div></div>
-        <div class="drink-item"><div class="drink-name">紅茶<small>Earl Grey</small></div><div class="drink-prices"><div class="drink-price-row"><span>HOT</span>¥500</div></div></div>
+        <div class="drink-item"><div class="drink-name">紅茶<small>Earl Grey（ティーポット提供）</small></div><div class="drink-prices"><div class="drink-price-row"><span>HOT</span>¥500</div></div></div>
         <div class="drink-item"><div class="drink-name">ウーロン茶</div><div class="drink-prices"><div class="drink-price-row">¥300</div></div></div>
         <div class="drink-item"><div class="drink-name">オレンジジュース</div><div class="drink-prices"><div class="drink-price-row">¥300</div></div></div>
         <div class="drink-item"><div class="drink-name">アップルジュース</div><div class="drink-prices"><div class="drink-price-row">¥300</div></div></div>
@@ -459,7 +469,7 @@ footer p{font-size:11px;color:#666;margin-top:16px;}
         <div class="info-row"><span class="info-label">営業日</span><span class="info-val">月・金・土・日・祝日</span></div>
         <div class="info-row"><span class="info-label">定休日</span><span class="info-val">火・水・木曜日</span></div>
         <div class="info-row"><span class="info-label">最寄駅</span><span class="info-val">新田駅（東口）徒歩約16分</span></div>
-        <div class="info-row"><span class="info-label">支払い</span><span class="info-val">PayPay対応・現金</span></div>
+        <div class="info-row"><span class="info-label">支払い</span><span class="info-val">現金・PayPay対応</span></div>
         <div class="info-row"><span class="info-label">駐輪</span><span class="info-val">駐車場1台あり</span></div>
       </div>
       <div class="map-card">
@@ -467,7 +477,8 @@ footer p{font-size:11px;color:#666;margin-top:16px;}
         <div class="map-embed">
           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3235.8!2d139.784!3d35.877!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzXCsDUyJzM3LjIiTiAxMznCsDQ3JzAyLjQiRQ!5e0!3m2!1sja!2sjp!4v1" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
-        <a class="map-btn" href="https://maps.google.com/?q=埼玉県越谷市南町2丁目10-14" target="_blank">Googleマップで開く</a>
+        <a class="map-btn" href="https://www.google.com/maps/place/?q=place_id:ChIJLzz6_POXGGARivmTJbVNx0E" target="_blank">Googleマップで開く</a>
+        <a class="map-btn map-btn-sub" href="https://www.instagram.com/reel/DRY1FvpE5R4/" target="_blank">道案内</a>
       </div>
     </div>
   </div>
